@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Aggiungi Utente</title>
+</head>
+
+<body>
+<h1>Welcome!</h1>
+
+<form method="POST" th:action="@{/user/insert}" th:object="${user}">
+
+    <div>
+        <label for="id">ID:</label>
+        <input type="text" id="id" th:field="*{id}" placeholder="Inserisci l'ID" required/>
+    </div>
+    <div>
+        <label for="name">Nome</label>
+        <input type="text" id="name" th:field="*{name}" placeholder="Inserisci il nome" required/>
+    </div>
+    <div>
+        <label for="surname">Cognome</label>
+        <input type="text" id="surname" th:field="*{surname}" placeholder="Inserisci il cognome" required/>
+    </div>
+    <div>
+        <button type="submit">Salva Utente</button>
+    </div>
+</form>
+
+<h2>Lista utenti</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
