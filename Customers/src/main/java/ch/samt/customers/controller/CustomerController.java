@@ -39,7 +39,7 @@ public class CustomerController {
             Customers costumer = customers.stream()
                     .filter(c -> c.getId().equals(customerId))
                     .findFirst().orElse(null);
-            model.addAttribute("customers", customers);
+            model.addAttribute("customer", customer);
         }
         return "customerList";
     }
