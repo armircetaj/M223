@@ -22,7 +22,7 @@ public class Product {
     @Positive(message = "Il prezzo deve essere positivo")
     private double price;
     @NotNull(message = "Errore, campo nullo")
-    @FutureOrPresent(message = "Errore nella data")
+    @FutureOrPresent(message = "La data deve essere futura")
     private LocalDate expirationDate;
     @NotNull
     @Size(min = 10, max = 1000, message = "Deve contenere una descrizione")
