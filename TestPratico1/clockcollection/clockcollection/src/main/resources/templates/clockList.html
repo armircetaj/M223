@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Clock Collection</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<ul>
+    <li>
+        <a th:href="@{/clocks}">Home</a>
+    </li>
+    <li>
+        <a th:href="@{/clocks/add}">Add</a>
+    </li>
+    <li>
+        <a th:href="@{/clocks/list}">List</a>
+    </li>
+</ul>
+<h1>Clock list</h1>
+<ul>
+    <li th:each="p : ${clocks}">
+        <span th:text="${p.id}"></span> -
+        <span th:text="${p.brand}"></span>
+        <span th:text="${p.model}"></span>
+        <span th:text="${p.price}"></span>
+    </li>
+</ul>

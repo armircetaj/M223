@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Clock Collection</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<ul>
+    <li>
+        <a th:href="@{/clocks}">Home</a>
+    </li>
+    <li>
+        <a th:href="@{/clocks/add}">Add</a>
+    </li>
+    <li>
+        <a th:href="@{/clocks/list}">List</a>
+    </li>
+</ul>
+<h1>Add a new clock</h1>
+
+<form method="POST" th:action="@{/clocks/add}" th:object="${clock}">
+
+    <div>
+        <label for="id">ID:</label>
+        <input type="number" id="id" th:field="*{id}" placeholder="Insert the ID" required/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('id')}"
+              th:errors="${clock.id}">ID Error
+        </span>
+    </div>
+    <br>
+    <div>
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" th:field="*{brand}" placeholder="Insert the brand" required/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('brand')}"
+              th:errors="${clock.brand}">Brand Error
+        </span>
+    </div>
+    <br>
+    <div>
+        <label for="model">Modello:</label>
+        <input type="text" id="model" th:field="*{model}" placeholder="Insert the model" required/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('model')}"
+              th:errors="${clock.model}">Model Error
+        </span>
+    </div>
+    <br>
+    <div>
+        <label for="price">Prezzo:</label>
+        <input type="number" step="0.01" id="price" th:field="*{price}" placeholder="Insert the price" required/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('price')}"
+              th:errors="${clock.price}">Price Error
+        </span>
+    </div>
+    <br>
+    <div>
+        <button type="submit">Add the clock</button>
+    </div>
+</form>
