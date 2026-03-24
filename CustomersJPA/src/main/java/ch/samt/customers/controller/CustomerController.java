@@ -2,6 +2,7 @@ package ch.samt.customers.controller;
 
 import ch.samt.customers.data.CustomerRepository;
 import ch.samt.customers.model.Customers;
+import ch.samt.customers.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class CustomerController {
 
-    private CustomerRepository customerRepository;
+    private CustomerService customerService;
 
     @Autowired
     public CustomerController(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
+        this.customerService = new CustomerService(customerRepository);
     }
 
     @GetMapping("/insert")
@@ -29,26 +30,26 @@ public class CustomerController {
         if (errors.hasErrors()) {
             return "insertCustomer";
         }
-        customerRepository.save(customer);
+        customerService.saveCustomer(customer);
         return "redirect:/customers";
     }
     @GetMapping("/customers")
     public String loadCustomers(Model model, @RequestParam(value="id", required=false) Long customerId) {
         if (customerId == null) {
-            model.addAttribute("customers", customerRepository.findAll());
+            model.addAttribute("customers", customerService.getAllCustomers());
         }
         else {
-            model.addAttribute("customers", customerRepository.findById(customerId));
+            model.addAttribute("customers", customerService.getCustomerById(customerId));
         }
         return "customerList";
     }
     @GetMapping("/customersbycity")
     public String loadCustomersByCity(Model model, @RequestParam(value="city", required=false) String city) {
         if (city == null) {
-            model.addAttribute("customers", customerRepository.findAll());
+            model.addAttribute("customers", customerService.getAllCustomers());
         }
         else {
-            model.addAttribute("customers", customerRepository.findByCity(city));
+            model.addAttribute("customers", customerService.getCustomersByCity(city));
         }
         return "customerList";
     }
