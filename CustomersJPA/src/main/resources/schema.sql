@@ -1,0 +1,13 @@
+CREATE SEQUENCE IF NOT EXISTS customer_seq START WITH 1 INCREMENT BY 1;
+CREATE TABLE IF NOT EXISTS customers (
+    id BIGINT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
+    city VARCHAR(100),
+    number VARCHAR(50),
+    expiration VARCHAR(10),
+    cvv VARCHAR(10)
+);
+
+

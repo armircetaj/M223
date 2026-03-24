@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Costumers</title>
+</head>
+<body>
+<h1>Insert new customer</h1>
+<form method="POST" th:object="${customer}">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('name')}"
+              th:errors="*{name}">Name Error</span>
+    </div>
+
+    <div>
+        <label for="surname">Surname:</label>
+        <input type="text" id="surname" th:field="*{surname}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('surname')}"
+              th:errors="*{surname}">Surname Error</span>
+    </div>
+
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" th:field="*{age}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('age')}"
+              th:errors="*{age}">Age Error</span>
+    </div>
+
+    <div>
+        <label for="city">City:</label>
+        <input type="text" id="city" th:field="*{city}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('city')}"
+              th:errors="*{city}">City Error</span>
+    </div>
+
+    <div>
+        <label for="number">Credit Card:</label>
+        <input type="text" id="number" th:field="*{number}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('number')}"
+              th:errors="*{number}">Credit Card Error</span>
+    </div>
+
+    <div>
+        <label for="expiration">Expiration:</label>
+        <input type="text" id="expiration" th:field="*{expiration}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('expiration')}"
+              th:errors="*{expiration}">Expiration Error</span>
+    </div>
+
+    <div>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" th:field="*{cvv}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('cvv')}"
+              th:errors="*{cvv}">CVV Error</span>
+    </div>
+
+    <div>
+        <button type="submit">Save</button>
+    </div>
+
+</form>
+</body>
