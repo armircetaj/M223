@@ -1,0 +1,54 @@
+spring:
+  application:
+    name: Customers
+
+server:
+  port: 8090
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    generate-unique-name: false
+    url: jdbc:h2:file:./h2-file/customers-dev
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:db/data-dev.sql
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    generate-unique-name: false
+    url: jdbc:h2:file:./h2-file/customers-prod
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: update
+
+  sql:
+    init:
+      mode: always
+      data-locations: classpath:db/data-prod.sql
