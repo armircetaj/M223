@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Instruments</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+<h1>Instruments List</h1>
+<ul>
+  <li>
+    <a th:href="@{/instruments}">List</a>
+  </li>
+  <li>
+    <a th:href="@{/instruments/insert}">Insert</a>
+  </li>
+  <li>
+    <a th:href="@{/instruments/5000}">Instruments Less Than 5000</a>
+  </li>
+</ul>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Type</th>
+    <th>Brand</th>
+    <th>Model</th>
+    <th>Price</th>
+    <th>Stock</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="instrument : ${instruments}">
+    <td th:text="${instrument.id}"></td>
+    <td th:text="${instrument.type}"></td>
+    <td th:text="${instrument.brand}"></td>
+    <td th:text="${instrument.model}"></td>
+    <td th:text="${instrument.price}"></td>
+    <td th:text="${instrument.stock}">
+    <td><a th:href="@{/instruments/sell/}+${instrument.id}">Sell one</a></td>
+  </tr>
+  </tbody>
+</table>
+</body>

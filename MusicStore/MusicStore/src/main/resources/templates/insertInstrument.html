@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Instruments</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/style.css}">
+</head>
+<body>
+<h1>Insert Instrument</h1>
+<ul>
+    <li>
+        <a th:href="@{/instruments}">List</a>
+    </li>
+    <li>
+        <a th:href="@{/instruments/insert}">Insert</a>
+    </li>
+    <li>
+        <a th:href="@{/instruments/5000}">Instruments Less Than 5000</a>
+    </li>
+</ul>
+<form method="POST" th:object="${instrument}">
+    <div>
+        <label for="type">Type:</label>
+        <input type="text" id="type" th:field="*{type}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('type')}"
+              th:errors="*{type}">Type Error</span>
+    </div>
+
+    <div>
+        <label for="brand">Brand:</label>
+        <input type="text" id="brand" th:field="*{brand}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('brand')}"
+              th:errors="*{brand}">Brand Error</span>
+    </div>
+
+    <div>
+        <label for="model">Model:</label>
+        <input type="text" id="model" th:field="*{model}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('model')}"
+              th:errors="*{model}">Model Error</span>
+    </div>
+
+    <div>
+        <label for="price">Price:</label>
+        <input type="number" id="price" step="0.01" th:field="*{price}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('price')}"
+              th:errors="*{price}">Price Error</span>
+    </div>
+
+    <div>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" th:field="*{stock}"/>
+        <span class="validationError"
+              th:if="${#fields.hasErrors('stock')}"
+              th:errors="*{stock}">Stock Error</span>
+    </div>
+
+    <div>
+        <button type="submit">Save</button>
+    </div>
+
+</form>
+</body>

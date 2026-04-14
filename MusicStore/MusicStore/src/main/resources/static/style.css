@@ -1,0 +1,16 @@
+p, h1, label, span, a {
+    font-family: Arial, serif;
+}
+
+ul {
+    width:auto;
+}
+
+.validationError {
+    color: #ff0000;
+}
+
+a {
+    color: #0070ff;
+    text-underline: none;
+}
