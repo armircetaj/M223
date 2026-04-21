@@ -1,0 +1,11 @@
+CREATE SEQUENCE IF NOT EXISTS blog_seq START WITH 1 INCREMENT BY 2;
+CREATE TABLE IF NOT EXISTS blog
+(
+    id BIGINT PRIMARY KEY,
+    title VARCHAR(50) NOT NULL,
+    date DATE NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    author VARCHAR(50) NOT NULL,
+    likes INT NOT NULL,
+    content clob NOT NULL
+);
